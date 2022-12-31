@@ -3,11 +3,13 @@ import { ApolloServer, gql } from "apollo-server";
 let tweets = [
     {
         id: "1",
-        text: "first one!"
+        text: "first one!",
+        userId:"2"
     },
     {
         id: "2",
-        text: "second one"
+        text: "second one",
+        userId:"1"
     },
 ]
 
@@ -58,7 +60,7 @@ const resolvers = {
         allUsers() {
             console.log("allUsers called!")
             return users;
-        }
+        },
     },
     Mutation: {
         postTweet(_, { text, userId }) {
@@ -77,10 +79,18 @@ const resolvers = {
         },
     },
     User: {
+        firstName({firstName}) {
+            return firstName;
+        },
         fullName({firstName, lastName}) {
             return `${firstName} ${lastName}`;
         },
     },
+    Tweet:{
+        author({userId}) {
+            return users.find((user) => user.id === userId);
+        }
+    }
 
 }
 
