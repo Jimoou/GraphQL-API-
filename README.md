@@ -22,7 +22,3 @@ REST는 데이터를 불러올 때, 해당되지 않는 데이터라도 한꺼�
 이러한 REST의 단점을 보완한 API가 GraphQL이다.
 
 <hr>
-
-# #1 Setup
-
-Depende
